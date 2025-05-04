@@ -1,0 +1,8 @@
+{
+    "format": "tfjs-layers-model",
+    "generatedBy": "tfjs-converter",
+    "weightsManifest": [{
+      "paths": ["group1-shard1of1.bin"],
+      "weights": [{"name": "dense/kernel", "shape": [312, 2], "dtype": "float32"}]
+    }]
+  }

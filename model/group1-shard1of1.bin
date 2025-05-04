@@ -1,0 +1,4 @@
+const modelWeightsBase64 = "ABCDEF..."; // ~1.2MB string
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.local.set({ modelWeights: modelWeightsBase64 });
+});
