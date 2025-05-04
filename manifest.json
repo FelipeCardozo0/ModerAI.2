@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "ModariAI",
+  "version": "1.1.0",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"  // ← Added for ML
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_idle",
+    "world": "ISOLATED"
+  }],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"  // ← Modified for TensorFlow.js
+  },
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "web_accessible_resources": [{  // ← Added for ML model files
+    "resources": ["model.json", "group1-shard1of1.bin"],
+    "matches": ["<all_urls>"]
+  }]
+}
